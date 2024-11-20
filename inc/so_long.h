@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/19 15:46:53 by david            ###   ########.fr       */
+/*   Updated: 2024/11/20 16:24:00 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,17 @@
 
 typedef struct s_game
 {
-	void	*mlx;
-	void	*mlx_win;
+	void	*mlx; // Instance MLX pour gérer le rendu graphique
+	void	*mlx_win;// Fenêtre créée via MLX
 	char	**map;// tableau 2d pour la carte
 	char	*map_file;//chemin du fichier
 }			t_game;
 
 /*---------------------------------------------*/
 
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
+int		count_line(t_game *game);
+char	**read_map(t_game *game);
+void	free_map(t_game *game);
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:47:11 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/07 17:59:40 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:50:12 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_gnl(const char *s)
 {
 	int		i;
 	char	*dest;
@@ -36,7 +36,7 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	if (s == NULL || !*s)
 		return (NULL);
-	dest = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	dest = malloc(sizeof(char) * (ft_strlen_gnl(s) + 1));
 	if (dest == NULL)
 	{
 		return (NULL);
@@ -50,7 +50,7 @@ char	*ft_strdup(const char *s)
 	return (dest);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_gnl(const char *s, int c)
 {
 	if (s == NULL)
 	{
@@ -75,8 +75,8 @@ char	*ft_line_join(char *s1, const char *s2)
 
 	if (s1 == NULL && s2 == NULL)
 		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	len_s1 = ft_strlen_gnl(s1);
+	len_s2 = ft_strlen_gnl(s2);
 	dest = malloc(sizeof(char) *(len_s1 + len_s2 + 1));
 	if (dest == NULL)
 	{

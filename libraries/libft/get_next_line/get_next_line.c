@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:46:35 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/07 17:47:07 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/20 14:46:15 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*read_line(int fd, char *line)
 	{
 		return (NULL);
 	}
-	while (!ft_strchr(line, '\n'))
+	while (!ft_strchr_gnl(line, '\n'))
 	{
 		nbyte = read(fd, buffer, BUFFER_SIZE);
 		if (nbyte == 0)
@@ -45,13 +45,13 @@ static char	*next_line(char	*line)
 	char	*next_char;
 	char	*new_line;
 
-	next_char = ft_strchr(line, '\n');
+	next_char = ft_strchr_gnl(line, '\n');
 	if (next_char == NULL)
 	{
 		return (NULL);
 	}
 	next_char++;
-	new_line = ft_strdup(next_char);
+	new_line = ft_strdup_gnl(next_char);
 	*next_char = '\0';
 	return (new_line);
 }
