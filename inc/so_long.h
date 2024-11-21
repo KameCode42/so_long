@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/20 16:24:00 by david            ###   ########.fr       */
+/*   Updated: 2024/11/21 17:20:46 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,18 @@ typedef struct s_game
 	void	*mlx_win;// Fenêtre créée via MLX
 	char	**map;// tableau 2d pour la carte
 	char	*map_file;//chemin du fichier
+	int		height;//hauteur de la map
+	int		width;//largeur de la map
+	int		player_x;
+	int		player_y;
+	int		items;
 }			t_game;
 
 /*---------------------------------------------*/
 
 int		ft_strcmp(char *s1, char *s2);
 int		count_line(t_game *game);
-char	**read_map(t_game *game);
 void	free_map(t_game *game);
+char	**read_map(t_game *game);
 
 #endif

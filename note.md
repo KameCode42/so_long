@@ -4,3 +4,11 @@
 4. lancement du jeu init et init window
 5. create game
 6. commande joueur
+
+
+
+
+
+compter element de la map
+verifier les conditions 
+valider aussi avec les mur
