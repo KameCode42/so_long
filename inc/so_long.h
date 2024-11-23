@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42.fr>            +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/21 17:20:46 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:25:49 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ typedef struct s_game
 	char	*map_file;//chemin du fichier
 	int		height;//hauteur de la map
 	int		width;//largeur de la map
-	int		player_x;
-	int		player_y;
-	int		items;
+	int		player_count;
+	int		exit_count;
+	int		collectible_count;
 }			t_game;
 
 /*---------------------------------------------*/
