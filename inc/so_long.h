@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/23 18:23:51 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/23 19:32:24 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		count_line(t_game *game);
 int		count_element_map(t_game *game);
 int		valid_map(t_game *game);
 int		valid_map_size(t_game *game);
+int		initiation_map(t_game *game);
 void	free_map(t_game *game);
 char	**read_map(t_game *game);
 

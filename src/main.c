@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/23 18:28:55 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/23 19:57:37 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv))
 		return (1);
 	game.map_file = argv[1];
-	if (!read_map(&game))
-		return (1);
-	count_element_map(&game);
-	if (!valid_map(&game))
+	if (!initiation_map(&game))
 		return (1);
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, 1920, 1080, "so_long");

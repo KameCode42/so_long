@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/11/23 18:57:41 by dle-fur          ###   ########.fr       */
+/*   Created: 2024/11/23 18:58:55 by dle-fur           #+#    #+#             */
+/*   Updated: 2024/11/23 19:54:53 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	initiation_map(t_game *game)
 {
-	int		i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
-
-void	free_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map[i] != NULL)
-	{
-		free(game->map[i]);
-		i++;
-	}
-	free(game->map);
+	if (!read_map(game))
+		return (0);
+	if (!count_element_map(game))
+		return (0);
+	if (!valid_map(game))
+		return (0);
+	return (1);
 }

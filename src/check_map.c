@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/23 18:26:05 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/23 20:27:11 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,20 @@ int	count_element_map(t_game *game)
 		}
 		y++;
 	}
-	return (0);
+	return (1);
 }
 
 int	valid_map_size(t_game *game)
 {
 	size_t	i;
 
+	if (!game->map || !game->map[0])
+		return (0);
+	game->width = ft_strlen(game->map[0]);
+	game->height = 0;
+	while (game->map[game->height])
+		game->height++;
+	ft_printf("Dimensions calculées : largeur = %d, hauteur = %d\n", game->width, game->height);
 	i = 0;
 	while (i < game->height)
 	{
@@ -125,17 +132,4 @@ int	valid_map(t_game *game)
 		return (0);
 	}
 	return (1);
-}
-
-void	free_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map[i] != NULL)
-	{
-		free(game->map[i]);
-		i++;
-	}
-	free(game->map);
 }
