@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/22 13:39:10 by david            ###   ########.fr       */
+/*   Updated: 2024/11/23 18:26:05 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,20 @@ char	**read_map(t_game *game)
 	}
 	game->map[i] = NULL;
 	close(fd);
+	game->height = line_count;
+	game->width = ft_strlen(game->map[0]);
 	return (game->map);
 }
-/*
-int	count_element_map(t_game *game, int x, int y)
+
+int	count_element_map(t_game *game)
 {
+	size_t	x;
+	size_t	y;
+
+	game->player_count = 0;
+	game->item_count = 0;
+	game->exit_count = 0;
+
 	y = 0;
 	while (y < game->height)
 	{
@@ -67,14 +76,57 @@ int	count_element_map(t_game *game, int x, int y)
 		while (x < game->width)
 		{
 			if (game->map[y][x] == PLAYER)
-				player_count++;
+				game->player_count++;
+			if (game->map[y][x] == EXIT)
+				game->exit_count++;
+			if (game->map[y][x] == ITEM)
+				game->item_count++;
 			x++;
 		}
 		y++;
 	}
 	return (0);
 }
-*/
+
+int	valid_map_size(t_game *game)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < game->height)
+	{
+		if (ft_strlen(game->map[i]) != game->width)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	valid_map(t_game *game)
+{
+	if (!valid_map_size(game))
+	{
+		ft_printf("Erreur la carte n est pas rectangulaire\n");
+		return (0);
+	}
+	if (game->player_count != 1)
+	{
+		ft_printf("la map doit contenir un seul joueur\n");
+		return (0);
+	}
+	if (game->item_count < 1)
+	{
+		ft_printf("la map doit contenir au moins un item");
+		return (0);
+	}
+	if (game->exit_count != 1)
+	{
+		ft_printf("la map doit contenir au moins une sortie\n");
+		return (0);
+	}
+	return (1);
+}
+
 void	free_map(t_game *game)
 {
 	int	i;
