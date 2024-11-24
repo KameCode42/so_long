@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_element_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/23 20:27:11 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/24 16:23:49 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	count_line(t_game *game)
 	if (fd < 0)
 		return (-1);
 	count_line = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		free(line);
 		count_line++;
@@ -41,16 +42,15 @@ char	**read_map(t_game *game)
 	fd = open(game->map_file, O_RDONLY);
 	line_count = count_line(game);
 	if (fd < 0)
-	{
-		ft_printf("Erreur : fichier inexistant\n");
 		return (NULL);
-	}
 	game->map = malloc(sizeof(char *) * (line_count + 1));
 	if (game->map == NULL)
 		return (NULL);
 	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
+		remove_newline(line);
 		game->map[i++] = line;
 	}
 	game->map[i] = NULL;
@@ -64,10 +64,6 @@ int	count_element_map(t_game *game)
 {
 	size_t	x;
 	size_t	y;
-
-	game->player_count = 0;
-	game->item_count = 0;
-	game->exit_count = 0;
 
 	y = 0;
 	while (y < game->height)
@@ -98,7 +94,6 @@ int	valid_map_size(t_game *game)
 	game->height = 0;
 	while (game->map[game->height])
 		game->height++;
-	ft_printf("Dimensions calculées : largeur = %d, hauteur = %d\n", game->width, game->height);
 	i = 0;
 	while (i < game->height)
 	{
@@ -112,24 +107,12 @@ int	valid_map_size(t_game *game)
 int	valid_map(t_game *game)
 {
 	if (!valid_map_size(game))
-	{
-		ft_printf("Erreur la carte n est pas rectangulaire\n");
-		return (0);
-	}
+		return (ft_error(3));
 	if (game->player_count != 1)
-	{
-		ft_printf("la map doit contenir un seul joueur\n");
-		return (0);
-	}
+		return (ft_error(4));
 	if (game->item_count < 1)
-	{
-		ft_printf("la map doit contenir au moins un item");
-		return (0);
-	}
+		return (ft_error(5));
 	if (game->exit_count != 1)
-	{
-		ft_printf("la map doit contenir au moins une sortie\n");
-		return (0);
-	}
+		return (ft_error(6));
 	return (1);
 }

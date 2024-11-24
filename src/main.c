@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/23 19:57:37 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/24 16:23:32 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,9 @@ static int	check_args(int argc, char **argv)
 
 	len = ft_strlen(argv[1]);
 	if (argc != 2)
-	{
-		ft_printf("Erreur : nombre d'arguments invalide\n");
-		return (1);
-	}
+		return (ft_error(1));
 	if (ft_strcmp(&argv[1][len - 4], ".ber") != 0)
-	{
-		ft_printf("Erreur : le fichier doit avoir l'extension .ber\n");
-		return (1);
-	}
+		return (ft_error(2));
 	return (0);
 }
 
@@ -42,6 +36,7 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv))
 		return (1);
+	ft_memset(&game, 0, sizeof(t_game));
 	game.map_file = argv[1];
 	if (!initiation_map(&game))
 		return (1);
