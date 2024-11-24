@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/24 16:23:49 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/24 18:17:20 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ int	count_line(t_game *game)
 	while (line != NULL)
 	{
 		free(line);
+		line = get_next_line(fd);
 		count_line++;
 	}
 	close(fd);
+	if (count_line == 0)
+		return (ft_error(8));
 	return (count_line);
 }
 
@@ -39,8 +42,8 @@ char	**read_map(t_game *game)
 	int		line_count;
 	int		i;
 
-	fd = open(game->map_file, O_RDONLY);
 	line_count = count_line(game);
+	fd = open(game->map_file, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
 	game->map = malloc(sizeof(char *) * (line_count + 1));
@@ -52,6 +55,7 @@ char	**read_map(t_game *game)
 	{
 		remove_newline(line);
 		game->map[i++] = line;
+		line = get_next_line(fd);
 	}
 	game->map[i] = NULL;
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/11/24 15:47:13 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/24 17:50:36 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	ft_error(int error)
 		ft_printf("Error: the map must contain at least one exit\n");
 	if (error == 7)
 		ft_printf("Error: File does not exist\n");
+	if (error == 8)
+		ft_printf("Error: map file is empty\n");
 	return (0);
 }
 
