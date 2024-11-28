@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/28 13:39:45 by david            ###   ########.fr       */
+/*   Updated: 2024/11/28 19:44:12 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int	main(int argc, char **argv)
 	if (!initiation_map(&game))
 		return (1);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, 1920, 1080, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.width * 32,
+			game.height * 32, "so_long");
+	create_window(&game);
 	mlx_hook(game.mlx_win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
 	free_map(&game);
