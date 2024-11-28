@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:13:38 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/28 19:46:12 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/28 20:00:42 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	place_fond(t_game *game)
 
 void	create_game(t_game *game)
 {
+	images_objets(game);
+	images_player_hd(game);
+	images_player_lr(game);
 	place_fond(game);
 }
 	/*
@@ -81,8 +84,5 @@ void	create_game(t_game *game)
 
 void	create_window(t_game *game)
 {
-	images_objets(game);
-	images_player_hd(game);
-	images_player_lr(game);
 	create_game(game);
 }
