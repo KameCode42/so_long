@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 09:35:00 by david             #+#    #+#             */
-/*   Updated: 2024/11/28 13:49:09 by david            ###   ########.fr       */
+/*   Updated: 2024/11/28 14:23:38 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,37 @@
 
 int	check_vertical_line(t_game *game)
 {
-	size_t	rows;
+	size_t	y;
 
-	rows = 0;
-	while (game->map[rows] != NULL)
+	y = 0;
+	while (game->map[y] != NULL)
 	{
-		if (game->map[rows][0] != WALL)
+		if (game->map[y][0] != WALL)
 			return (0);
-		if (game->map[rows][ft_strlen(game->map[rows]) - 1] != WALL)
+		if (game->map[y][game->width - 1] != WALL)
 			return (0);
-		rows++;
+		y++;
 	}
 	return (1);
 }
 
 int	check_horizontal_line(t_game *game)
 {
-	size_t	rows;
-	size_t	cols;
+	size_t	x;
 
-	rows = 0;
-	while (game->map[rows] != NULL)
-		rows++;
-	cols = 0;
-	while (game->map[0][cols] != '\0')
+	x = 0;
+	while (game->map[0][x] != '\0')
 	{
-		if (game->map[0][cols] != WALL)
+		if (game->map[0][x] != WALL)
 			return (0);
-		cols++;
+		x++;
 	}
-	cols = 0;
-	while (game->map[rows - 1][cols] != '\0')
+	x = 0;
+	while (game->map[game->height - 1][x] != '\0')
 	{
-		if (game->map[rows - 1][cols] != WALL)
+		if (game->map[game->height - 1][x] != WALL)
 			return (0);
-		cols++;
+		x++;
 	}
 	return (1);
 }
