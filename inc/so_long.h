@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/24 15:42:52 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/28 13:42:04 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ int		valid_map(t_game *game);
 int		valid_map_size(t_game *game);
 int		initiation_map(t_game *game);
 int		ft_error(int error);
+int		check_vertical_line(t_game *game);
+int		check_horizontal_line(t_game *game);
+int		valid_wall_map(t_game *game);
 void	remove_newline(char *line);
 void	free_map(t_game *game);
 char	**read_map(t_game *game);

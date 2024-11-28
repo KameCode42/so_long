@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/11/24 17:50:36 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/28 13:42:59 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	ft_error(int error)
 		ft_printf("Error: File does not exist\n");
 	if (error == 8)
 		ft_printf("Error: map file is empty\n");
+	if (error == 9)
+		ft_printf("Error: the map is not closed by walls\n");
 	return (0);
 }
 

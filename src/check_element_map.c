@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/24 18:17:20 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/28 13:45:22 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,7 @@ int	valid_map(t_game *game)
 		return (ft_error(5));
 	if (game->exit_count != 1)
 		return (ft_error(6));
+	if (!valid_wall_map(game))
+		return (ft_error(9));
 	return (1);
 }

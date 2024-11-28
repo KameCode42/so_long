@@ -9,7 +9,9 @@ RM			= rm -f
 
 FLAGS		= -Wall -Wextra -Werror -Iinc
 
-SRCS 		= ./src/main.c ./src/utils.c ./src/check_element_map.c ./src/init_map.c
+SRCS 		= \
+./src/main.c ./src/utils.c ./src/check_element_map.c ./src/init_map.c \
+./src/check_wall_map.c ./src/check_path_map.c
 
 OBJS 		= $(SRCS:.c=.o)
 
