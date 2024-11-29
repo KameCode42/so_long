@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/28 19:46:26 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:23:04 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ typedef struct s_game
 	void	*img_right2;
 	void	*img_right3;
 	void	*img_right4;
-	void	*img_high1;
-	void	*img_high2;
-	void	*img_high3;
-	void	*img_high4;
+	void	*img_up1;
+	void	*img_up2;
+	void	*img_up3;
+	void	*img_up4;
 	void	*img_down1;
 	void	*img_down2;
 	void	*img_down3;
@@ -96,11 +96,19 @@ int		valid_wall_map(t_game *game);
 char	**read_map(t_game *game);
 void	remove_newline(char *line);
 void	free_map(t_game *game);
-void	images_objets(t_game *game);
-void	images_player_lr(t_game *game);
-void	images_player_hd(t_game *game);
-void	place_fond(t_game *game);
-void	create_game(t_game *game);
+void	images_objects(t_game *game);
+void	images_player_left(t_game *game);
+void	images_player_right(t_game *game);
+void	images_player_up(t_game *game);
+void	images_player_down(t_game *game);
+void	place_floor(t_game *game);
+void	place_wall(t_game *game);
+void	place_item(t_game *game);
+void	place_exit(t_game *game);
+void	place_player_up(t_game *game);
+void	place_player_down(t_game *game);
+void	place_player_left(t_game *game);
+void	place_player_right(t_game *game);
 void	create_window(t_game *game);
 
 #endif

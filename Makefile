@@ -11,8 +11,8 @@ FLAGS		= -Wall -Wextra -Werror -Iinc
 
 SRCS 		= \
 ./src/main.c ./src/utils.c ./src/check_element_map.c ./src/init_map.c \
-./src/check_wall_map.c ./src/check_path_map.c ./src/create_window.c \
-./src/create_images.c
+./src/check_wall_map.c ./src/check_path_map.c ./src/create_images.c \
+./src/create_game_objects.c ./src/create_game_player.c
 
 OBJS 		= $(SRCS:.c=.o)
 

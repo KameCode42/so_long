@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   create_images.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:07:14 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/28 19:42:41 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:22:51 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	images_objets(t_game *game)
+void	images_objects(t_game *game)
 {
 	int	width;
 	int	height;
@@ -29,7 +29,7 @@ void	images_objets(t_game *game)
 	game->img_height = height;
 }
 
-void	images_player_lr(t_game *game)
+void	images_player_left(t_game *game)
 {
 	int	width;
 	int	height;
@@ -42,6 +42,15 @@ void	images_player_lr(t_game *game)
 			&width, &height);
 	game->img_left4 = mlx_xpm_file_to_image(game->mlx, "./assets/left4.xpm",
 			&width, &height);
+	game->img_width = width;
+	game->img_height = height;
+}
+
+void	images_player_right(t_game *game)
+{
+	int	width;
+	int	height;
+
 	game->img_right1 = mlx_xpm_file_to_image(game->mlx, "./assets/right1.xpm",
 			&width, &height);
 	game->img_right2 = mlx_xpm_file_to_image(game->mlx, "./assets/right2.xpm",
@@ -54,19 +63,28 @@ void	images_player_lr(t_game *game)
 	game->img_height = height;
 }
 
-void	images_player_hd(t_game *game)
+void	images_player_up(t_game *game)
 {
 	int	width;
 	int	height;
 
-	game->img_high1 = mlx_xpm_file_to_image(game->mlx, "./assets/high1.xpm",
+	game->img_up1 = mlx_xpm_file_to_image(game->mlx, "./assets/up1.xpm",
 			&width, &height);
-	game->img_high2 = mlx_xpm_file_to_image(game->mlx, "./assets/high2.xpm",
+	game->img_up2 = mlx_xpm_file_to_image(game->mlx, "./assets/up2.xpm",
 			&width, &height);
-	game->img_high3 = mlx_xpm_file_to_image(game->mlx, "./assets/high3.xpm",
+	game->img_up3 = mlx_xpm_file_to_image(game->mlx, "./assets/up3.xpm",
 			&width, &height);
-	game->img_high4 = mlx_xpm_file_to_image(game->mlx, "./assets/high4.xpm",
+	game->img_up4 = mlx_xpm_file_to_image(game->mlx, "./assets/up4.xpm",
 			&width, &height);
+	game->img_width = width;
+	game->img_height = height;
+}
+
+void	images_player_down(t_game *game)
+{
+	int	width;
+	int	height;
+
 	game->img_down1 = mlx_xpm_file_to_image(game->mlx, "./assets/down1.xpm",
 			&width, &height);
 	game->img_down2 = mlx_xpm_file_to_image(game->mlx, "./assets/down2.xpm",
