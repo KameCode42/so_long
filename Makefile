@@ -10,9 +10,10 @@ RM			= rm -f
 FLAGS		= -Wall -Wextra -Werror -Iinc
 
 SRCS 		= \
-./src/main.c ./src/utils.c ./src/check_element_map.c ./src/init_map.c \
-./src/check_wall_map.c ./src/check_path_map.c ./src/create_images_struct.c \
-./src/create_game_objects.c ./src/create_game_player.c
+./src/map/check_element_map.c ./src/map/check_path_map.c ./src/map/check_wall_map.c ./src/map/init_map.c \
+./src/win/create_images_struct.c ./src/win/render_objects.c ./src/win/render_player.c \
+./src/move/controls.c \
+./src/main.c ./src/utils.c \
 
 OBJS 		= $(SRCS:.c=.o)
 
