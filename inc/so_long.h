@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/29 18:55:24 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/30 10:50:21 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,12 @@ int		count_line(t_game *game);
 char	**read_map(t_game *game);
 int		count_element_map(t_game *game);
 int		valid_map_size(t_game *game);
-int		valid_map(t_game *game);
 int		check_vertical_line(t_game *game);
 int		check_horizontal_line(t_game *game);
 int		valid_wall_map(t_game *game);
 int		initiation_map(t_game *game);
 void	create_images(t_game *game);
-int		create_game(t_game *game);
+int		valid_map(t_game *game);
 
 //move
 void	move_up(t_game *game);
@@ -109,6 +108,7 @@ void	place_wall(t_game *game, int y, int x);
 void	place_item(t_game *game, int y, int x);
 void	place_exit(t_game *game, int y, int x);
 void	place_player(t_game *game, int y, int x);
+int		create_game(t_game *game);
 
 //main
 int		close_game(t_game *game);

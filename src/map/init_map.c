@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:58:55 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/29 18:55:08 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/11/30 10:51:24 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,46 @@ void	create_images(t_game *game)
 	images_player_right(game);
 }
 
-int	create_game(t_game *game)
+int	valid_map_size(t_game *game)
 {
-	size_t	y;
-	size_t	x;
+	size_t	i;
 
-	y = 0;
-	while (y < game->height)
+	if (!game->map || !game->map[0])
+		return (0);
+	game->width = ft_strlen(game->map[0]);
+	game->height = 0;
+	while (game->map[game->height])
+		game->height++;
+	i = 0;
+	while (i < game->height)
 	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == FLOOR)
-				place_floor(game, y, x);
-			if (game->map[y][x] == ITEM)
-				place_item(game, y, x);
-			if (game->map[y][x] == WALL)
-				place_wall(game, y, x);
-			if (game->map[y][x] == EXIT)
-				place_exit(game, y, x);
-			if (game->map[y][x] == PLAYER)
-				place_player(game, y, x);
-			x++;
-		}
-		y++;
+		if (ft_strlen(game->map[i]) != game->width)
+			return (0);
+		i++;
 	}
-	return (0);
+	return (1);
+}
+
+int	valid_wall_map(t_game *game)
+{
+	if (!check_vertical_line(game))
+		return (0);
+	if (!check_horizontal_line(game))
+		return (0);
+	return (1);
+}
+
+int	valid_map(t_game *game)
+{
+	if (!valid_map_size(game))
+		return (ft_error(3));
+	if (game->player_count != 1)
+		return (ft_error(4));
+	if (game->item_count < 1)
+		return (ft_error(5));
+	if (game->exit_count != 1)
+		return (ft_error(6));
+	if (!valid_wall_map(game))
+		return (ft_error(9));
+	return (1);
 }

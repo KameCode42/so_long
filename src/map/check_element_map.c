@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/28 13:45:22 by david            ###   ########.fr       */
+/*   Updated: 2024/11/30 10:52:29 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,37 +88,39 @@ int	count_element_map(t_game *game)
 	return (1);
 }
 
-int	valid_map_size(t_game *game)
+int	check_vertical_line(t_game *game)
 {
-	size_t	i;
+	size_t	y;
 
-	if (!game->map || !game->map[0])
-		return (0);
-	game->width = ft_strlen(game->map[0]);
-	game->height = 0;
-	while (game->map[game->height])
-		game->height++;
-	i = 0;
-	while (i < game->height)
+	y = 0;
+	while (game->map[y] != NULL)
 	{
-		if (ft_strlen(game->map[i]) != game->width)
+		if (game->map[y][0] != WALL)
 			return (0);
-		i++;
+		if (game->map[y][game->width - 1] != WALL)
+			return (0);
+		y++;
 	}
 	return (1);
 }
 
-int	valid_map(t_game *game)
+int	check_horizontal_line(t_game *game)
 {
-	if (!valid_map_size(game))
-		return (ft_error(3));
-	if (game->player_count != 1)
-		return (ft_error(4));
-	if (game->item_count < 1)
-		return (ft_error(5));
-	if (game->exit_count != 1)
-		return (ft_error(6));
-	if (!valid_wall_map(game))
-		return (ft_error(9));
+	size_t	x;
+
+	x = 0;
+	while (game->map[0][x] != '\0')
+	{
+		if (game->map[0][x] != WALL)
+			return (0);
+		x++;
+	}
+	x = 0;
+	while (game->map[game->height - 1][x] != '\0')
+	{
+		if (game->map[game->height - 1][x] != WALL)
+			return (0);
+		x++;
+	}
 	return (1);
 }
