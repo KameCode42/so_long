@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/29 16:54:42 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/05 09:40:47 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int argc, char **argv)
 			game.height * 32, "so_long");
 	create_images(&game);
 	create_game(&game);
+	ft_printf("item collect = 0\n");
+	ft_printf("number of movements = 0\n");
 	mlx_key_hook(game.mlx_win, controls, &game);
 	mlx_hook(game.mlx_win, 17, 0, close_game, &game);
 	mlx_loop(game.mlx);
