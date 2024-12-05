@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/11/30 10:52:29 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:52:24 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	count_element_map(t_game *game)
 			if (game->map[y][x] == EXIT)
 				game->exit_count++;
 			if (game->map[y][x] == ITEM)
-				game->item_count++;
+				game->total_items++;
 			x++;
 		}
 		y++;

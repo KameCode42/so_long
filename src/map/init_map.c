@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:58:55 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/30 10:51:24 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:52:41 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	valid_map(t_game *game)
 		return (ft_error(3));
 	if (game->player_count != 1)
 		return (ft_error(4));
-	if (game->item_count < 1)
+	if (game->total_items < 1)
 		return (ft_error(5));
 	if (game->exit_count != 1)
 		return (ft_error(6));

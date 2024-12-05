@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/05 09:27:31 by david            ###   ########.fr       */
+/*   Updated: 2024/12/05 12:01:10 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_game
 
 	int		player_count;
 	int		exit_count;
-	int		item_count;
+	int		total_items;
 	int		count_items;
 	int		count_move;
 	size_t	player_y;
@@ -98,6 +98,7 @@ void	move_down(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
 int		controls(int key, t_game *game);
+int		success_game(t_game *game);
 
 //win
 void	images_objects(t_game *game);

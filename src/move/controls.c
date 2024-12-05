@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:39:16 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/05 09:43:01 by david            ###   ########.fr       */
+/*   Updated: 2024/12/05 13:13:30 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	move_up(t_game *game)
 {
-	if (game->map[game->player_y - 1][game->player_x] != WALL)
+	if (game->map[game->player_y - 1][game->player_x] != WALL &&
+			(game->map[game->player_y - 1][game->player_x] != EXIT ||
+			game->count_items == game->total_items))
 	{
 		game->direction = UP;
-		game->map[game->player_y][game->player_x] = FLOOR;
+		if (game->map[game->player_y][game->player_x] != EXIT)
+			game->map[game->player_y][game->player_x] = FLOOR;
 		game->count_move++;
 		ft_printf("number of movements = %d\n", game->count_move);
 		if (game->map[game->player_y - 1][game->player_x] == ITEM)
@@ -25,18 +28,23 @@ void	move_up(t_game *game)
 			game->count_items++;
 			ft_printf("item collect = %d\n", game->count_items);
 		}
-		game->map[game->player_y - 1][game->player_x] = PLAYER;
+		if (game->map[game->player_y - 1][game->player_x] != EXIT)
+			game->map[game->player_y - 1][game->player_x] = PLAYER;
 		game->player_y -= 1;
+		success_game(game);
 	}
 	create_game(game);
 }
 
 void	move_down(t_game *game)
 {
-	if (game->map[game->player_y + 1][game->player_x] != WALL)
+	if (game->map[game->player_y + 1][game->player_x] != WALL &&
+			(game->map[game->player_y + 1][game->player_x] != EXIT ||
+			game->count_items == game->total_items))
 	{
 		game->direction = DOWN;
-		game->map[game->player_y][game->player_x] = FLOOR;
+		if (game->map[game->player_y][game->player_x] != EXIT)
+			game->map[game->player_y][game->player_x] = FLOOR;
 		game->count_move++;
 		ft_printf("number of movements = %d\n", game->count_move);
 		if (game->map[game->player_y + 1][game->player_x] == ITEM)
@@ -44,18 +52,23 @@ void	move_down(t_game *game)
 			game->count_items++;
 			ft_printf("item collect = %d\n", game->count_items);
 		}
-		game->map[game->player_y + 1][game->player_x] = PLAYER;
+		if (game->map[game->player_y + 1][game->player_x] != EXIT)
+			game->map[game->player_y + 1][game->player_x] = PLAYER;
 		game->player_y += 1;
+		success_game(game);
 	}
 	create_game(game);
 }
 
 void	move_left(t_game *game)
 {
-	if (game->map[game->player_y][game->player_x - 1] != WALL)
+	if (game->map[game->player_y][game->player_x - 1] != WALL &&
+			(game->map[game->player_y][game->player_x - 1] != EXIT ||
+			game->count_items == game->total_items))
 	{
 		game->direction = LEFT;
-		game->map[game->player_y][game->player_x] = FLOOR;
+		if (game->map[game->player_y][game->player_x] != EXIT)
+			game->map[game->player_y][game->player_x] = FLOOR;
 		game->count_move++;
 		ft_printf("number of movements = %d\n", game->count_move);
 		if (game->map[game->player_y][game->player_x - 1] == ITEM)
@@ -63,18 +76,23 @@ void	move_left(t_game *game)
 			game->count_items++;
 			ft_printf("item collect = %d\n", game->count_items);
 		}
-		game->map[game->player_y][game->player_x - 1] = PLAYER;
+		if (game->map[game->player_y][game->player_x - 1] != EXIT)
+			game->map[game->player_y][game->player_x - 1] = PLAYER;
 		game->player_x -= 1;
+		success_game(game);
 	}
 	create_game(game);
 }
 
 void	move_right(t_game *game)
 {
-	if (game->map[game->player_y][game->player_x + 1] != WALL)
+	if (game->map[game->player_y][game->player_x + 1] != WALL &&
+			(game->map[game->player_y][game->player_x + 1] != EXIT ||
+			game->count_items == game->total_items))
 	{
 		game->direction = RIGHT;
-		game->map[game->player_y][game->player_x] = FLOOR;
+		if (game->map[game->player_y][game->player_x] != EXIT)
+			game->map[game->player_y][game->player_x] = FLOOR;
 		game->count_move++;
 		ft_printf("number of movements = %d\n", game->count_move);
 		if (game->map[game->player_y][game->player_x + 1] == ITEM)
@@ -82,8 +100,10 @@ void	move_right(t_game *game)
 			game->count_items++;
 			ft_printf("item collect = %d\n", game->count_items);
 		}
-		game->map[game->player_y][game->player_x + 1] = PLAYER;
+		if (game->map[game->player_y][game->player_x + 1] != EXIT)
+			game->map[game->player_y][game->player_x + 1] = PLAYER;
 		game->player_x += 1;
+		success_game(game);
 	}
 	create_game(game);
 }
