@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:13:38 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/30 10:49:48 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/05 14:06:56 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	create_game(t_game *game)
 		}
 		y++;
 	}
+	ft_printf("Number of movements = %d\n", game->count_move);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/05 12:01:10 by david            ###   ########.fr       */
+/*   Updated: 2024/12/05 16:11:00 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@
 # define KEY_ESC 65307
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
-# define TRUE 1
-# define FALSE 0
 # define UP 1
 # define DOWN 2
 # define LEFT 3
@@ -70,6 +68,7 @@ typedef struct s_game
 	size_t	player_y;
 	size_t	player_x;
 	char	**map;
+	int		**map_copy;
 	char	*map_file;
 	size_t	height;
 	size_t	width;
@@ -91,6 +90,8 @@ int		valid_wall_map(t_game *game);
 int		initiation_map(t_game *game);
 void	create_images(t_game *game);
 int		valid_map(t_game *game);
+bool	check_path(t_game *game);
+bool	check_path_rec(t_game *game);
 
 //move
 void	move_up(t_game *game);
@@ -114,7 +115,10 @@ void	place_player(t_game *game, int y, int x);
 int		create_game(t_game *game);
 
 //main
+int		check_args(int argc, char **argv);
 int		close_game(t_game *game);
+void	setup_hook(t_game *game);
+int		init_game(t_game *game, char **argv);
 
 //utils
 int		ft_strcmp(char *s1, char *s2);
