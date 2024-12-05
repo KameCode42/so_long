@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:39:16 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/11/29 17:25:26 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/01 17:58:06 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,47 @@
 
 void	move_up(t_game *game)
 {
-	game->direction = UP;
-	game->map[game->player_y][game->player_x] = FLOOR;
-	game->map[game->player_y - 1][game->player_x] = PLAYER;
+	if (game->map[game->player_y - 1][game->player_x] != WALL)
+	{
+		game->direction = UP;
+		game->map[game->player_y][game->player_x] = FLOOR;
+		game->map[game->player_y - 1][game->player_x] = PLAYER;
+		game->player_y -= 1;
+	}
 	create_game(game);
 }
 
 void	move_down(t_game *game)
 {
-	game->direction = DOWN;
-	game->map[game->player_y][game->player_x] = FLOOR;
-	game->map[game->player_y + 1][game->player_x] = PLAYER;
+	if (game->map[game->player_y + 1][game->player_x] != WALL)
+	{
+		game->direction = DOWN;
+		game->map[game->player_y][game->player_x] = FLOOR;
+		game->map[game->player_y + 1][game->player_x] = PLAYER;
+		game->player_y += 1;
+	}
 	create_game(game);
 }
 
 void	move_left(t_game *game)
 {
-	game->direction = LEFT;
-	game->map[game->player_y][game->player_x] = FLOOR;
-	game->map[game->player_y][game->player_x - 1] = PLAYER;
+	if (game->map[game->player_y][game->player_x - 1] != WALL)
+	{
+		game->direction = LEFT;
+		game->map[game->player_y][game->player_x] = FLOOR;
+		game->map[game->player_y][game->player_x - 1] = PLAYER;
+	}
 	create_game(game);
 }
 
 void	move_right(t_game *game)
 {
-	game->direction = RIGHT;
-	game->map[game->player_y][game->player_x] = FLOOR;
-	game->map[game->player_y][game->player_x + 1] = PLAYER;
+	if (game->map[game->player_y][game->player_x + 1] != WALL)
+	{
+		game->direction = RIGHT;
+		game->map[game->player_y][game->player_x] = FLOOR;
+		game->map[game->player_y][game->player_x + 1] = PLAYER;
+	}
 	create_game(game);
 }
 
