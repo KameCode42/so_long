@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   check_path_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/05 16:48:41 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/06 10:10:43 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*
 bool	check_path(t_game *game)
 {
 	size_t	x;
@@ -79,3 +79,4 @@ Fonction search(x, y):
         - collected_c -= 1
         - Retirer (x, y) de collected_positions
     k. Retourner False (aucun chemin valide depuis cette position)
+*/

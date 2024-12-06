@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/05 16:11:00 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/06 10:11:31 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <math.h>
+# include <stdbool.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/mlx/mlx.h"
 
