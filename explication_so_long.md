@@ -48,7 +48,9 @@ check_element_map :
 
 - check_horizontal_line : permet de verifier si les bords inferieur et superieur sont fermer par des murs
 
-Check_path_map :
+check_path_map :
+- check_path = initialise une map copy rempli de false, false signifiant que la case n'a pas encore ete explore
+evite de repasser sur une case deja visite
 
 
 

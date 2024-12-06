@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/11/28 13:42:59 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 11:52:45 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ void	free_map(t_game *game)
 		i++;
 	}
 	free(game->map);
+}
+
+bool	free_map_copy(t_game *game)
+{
+	size_t	y;
+
+	y = game->height;
+	while (y > 0)
+	{
+		y--;
+		free(game->map_copy[y]);
+	}
+	free(game->map_copy);
+	game->map_copy = NULL;
+	return (false);
 }
 
 int	ft_error(int error)

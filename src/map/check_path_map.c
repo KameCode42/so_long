@@ -6,36 +6,55 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/06 10:10:43 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 12:30:30 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-/*
-bool	check_path(t_game *game)
-{
-	size_t	x;
-	size_t	y;
-	size_t	x_end;
-	size_t	y_end;
 
+bool	map_calc(t_game *game, size_t y, size_t x)
+{
 	game->map_copy = malloc(game->height * sizeof(bool *));
 	if (game->map_copy == NULL)
 		return (false);
 	y = 0;
 	while (y < game->height)
 	{
+		game->map_copy[y] = malloc(game->width * sizeof(bool));
+		if (game->map_copy[y] == NULL)
+		{
+			free_map_copy(game);
+			return (false);
+		}
 		x = 0;
-		game->map_copy[x] = malloc(game->width * sizeof(bool));
-		y++;
 		while (x < game->width)
 		{
 			game->map_copy[y][x] = false;
 			x++;
 		}
+		y++;
 	}
+	return (true);
 }
 
+bool	check_path(t_game *game, size_t y, size_t x)
+{
+	y = 0;
+	x = 0;
+	
+	if (x >= game->width || y >= game->height)
+		return (0);
+	if (game->map[y][x] == WALL)
+		return (0);
+	return (true);
+}
+
+
+
+
+
+
+/*
 bool	check_path_rec(t_game *game)
 {
 	if (game->map_copy[y][x] == WALL)
@@ -49,34 +68,61 @@ bool	check_path_rec(t_game *game)
 }
 
 
-Fonction search(x, y):
-    b. Si map[x][y] == '1':
-        Retourner False (position est un mur)
-    c. Si visited[x][y] est True:
-        Retourner False (position déjà visitée dans le chemin actuel)
-    d. Définir visited[x][y] = True
-    e. Initialiser collected_this_node = False
-    f. Si map[x][y] == 'C' et (x, y) n'est pas dans collected_positions:
-        - collected_c += 1
-        - Ajouter (x, y) à collected_positions
-        - Définir collected_this_node = True
-    g. Si x == E_x et y == E_y:
-        - Si collected_c == total_c:
-            Retourner True (tous les objets collectés et sortie atteinte)
-        - Sinon:
-            - Définir visited[x][y] = False
-            - Si collected_this_node est True:
-                - collected_c -= 1
-                - Retirer (x, y) de collected_positions
-            Retourner False (tous les objets de collection non collectés)
-    h. Pour chaque direction dans [(0, 1), (1, 0), (0, -1), (-1, 0)]:
-        - new_x = x + dx
-        - new_y = y + dy
-        - Si search(new_x, new_y) retourne True:
-            Retourner True (chemin valide trouvé)
-    i. Définir visited[x][y] = False
-    j. Si collected_this_node est True:
-        - collected_c -= 1
-        - Retirer (x, y) de collected_positions
-    k. Retourner False (aucun chemin valide depuis cette position)
+fonction check_path_validity(game)
+    VARIABLES :
+        - `x_start`, `y_start` : coordonnées de la position initiale du joueur (`P`).
+        - `C_count` : nombre total de collectables (`C`) sur la carte.
+        - `C_collected` : nombre de collectables ramassés (initialisé à 0).
+        - `found_exit` : booléen, vrai si la sortie (`E`) est atteinte (initialisé à FALSE).
+
+    1. **Trouver les positions clés :**
+        - Identifier `x_start, y_start` (position de `P`).
+        - Compter les `C` pour initialiser `C_count`.
+
+    2. **Préparer la carte de suivi :**
+        - Utiliser `game->map_copy` comme matrice booléenne pour marquer les cases visitées.
+        - Toutes les cases sont initialisées à FALSE (non visitées).
+
+    3. **Appeler la fonction récursive `explorer` :**
+        - Appeler `explorer(game, x_start, y_start, &C_collected, C_count, &found_exit)`.
+
+    4. **Valider le résultat :**
+        - Si `C_collected == C_count` **et** `found_exit == TRUE` :
+            Retourner TRUE (le chemin est valide).
+        - Sinon :
+            Retourner FALSE (chemin invalide ou incomplet).
+
+
+
+
+
+fonction explorer(game, x, y, C_collected, C_count, found_exit)
+    VARIABLES :
+        - `x, y` : coordonnées de la case actuelle.
+        - `C_collected` : pointeur vers le compteur des collectables ramassés.
+        - `C_count` : nombre total de collectables.
+        - `found_exit` : pointeur vers le booléen indiquant si la sortie est atteinte.
+
+    1. **Vérifications préliminaires :**
+ 
+        - Si `(x, y)` est déjà marquée comme visitée dans `game->map_copy` :
+            Retourner (case déjà explorée).
+
+    2. **Traiter la case actuelle :**
+        - Marquer `(x, y)` comme visitée dans `game->map_copy`.
+        - Si la case contient un collectable (`C`) :
+            - Incrémenter `*C_collected`.
+        - Si la case est la sortie (`E`) :
+            - Si `*C_collected == C_count` :
+                - Mettre `*found_exit = TRUE`.
+
+    3. **Explorer les cases voisines :**
+        - Appeler récursivement `explorer` dans les 4 directions :
+            - `explorer(game, x + 1, y, C_collected, C_count, found_exit)` (vers le bas).
+            - `explorer(game, x - 1, y, C_collected, C_count, found_exit)` (vers le haut).
+            - `explorer(game, x, y + 1, C_collected, C_count, found_exit)` (vers la droite).
+            - `explorer(game, x, y - 1, C_collected, C_count, found_exit)` (vers la gauche).
+
+    4. **Retour :**
+        - Retourner lorsque toutes les directions sont explorées.
 */

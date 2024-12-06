@@ -6,7 +6,7 @@
 /*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 10:11:31 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 12:27:37 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		valid_wall_map(t_game *game);
 int		initiation_map(t_game *game);
 void	create_images(t_game *game);
 int		valid_map(t_game *game);
-bool	check_path(t_game *game);
-bool	check_path_rec(t_game *game);
+bool	map_calc(t_game *game, size_t y, size_t x);
+bool	check_path(t_game *game, size_t y, size_t x);
 
 //move
 void	move_up(t_game *game);
@@ -126,5 +126,6 @@ int		ft_strcmp(char *s1, char *s2);
 void	free_map(t_game *game);
 int		ft_error(int error);
 void	remove_newline(char *line);
+bool	free_map_copy(t_game *game);
 
 #endif
