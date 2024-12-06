@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 12:27:37 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 16:03:55 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef struct s_game
 	size_t	img_height;
 	size_t	img_width;
 	int		direction;
+	size_t	y;
+	size_t	x;
 }			t_game;
 
 /*---------------------------------------------*/
@@ -93,6 +95,7 @@ void	create_images(t_game *game);
 int		valid_map(t_game *game);
 bool	map_calc(t_game *game, size_t y, size_t x);
 bool	check_path(t_game *game, size_t y, size_t x);
+bool	check_path_valid(t_game *game);
 
 //move
 void	move_up(t_game *game);

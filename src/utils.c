@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/12/06 11:52:45 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 18:50:42 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,18 @@ bool	free_map_copy(t_game *game)
 {
 	size_t	y;
 
+	if (game->map_copy == NULL)
+		return (false);
 	y = game->height;
 	while (y > 0)
 	{
 		y--;
-		free(game->map_copy[y]);
+		if (game->map_copy[y] != NULL)
+			free(game->map_copy[y]);
 	}
 	free(game->map_copy);
 	game->map_copy = NULL;
-	return (false);
+	return (true);
 }
 
 int	ft_error(int error)
@@ -74,6 +77,8 @@ int	ft_error(int error)
 		ft_printf("Error: map file is empty\n");
 	if (error == 9)
 		ft_printf("Error: the map is not closed by walls\n");
+	if (error == 10)
+		ft_printf("chemin invalide\n");
 	return (0);
 }
 

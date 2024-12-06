@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:58:55 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/05 10:52:41 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 18:51:36 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	initiation_map(t_game *game)
 {
 	if (!read_map(game))
 		return (ft_error(7));
-	if (!count_element_map(game))
-		return (0);
-	if (!valid_map(game))
-		return (0);
-	return (1);
+	if (count_element_map(game))
+		return (1);
+	if (valid_map(game))
+		return (1);
+	return (0);
 }
 
 void	create_images(t_game *game)
@@ -54,11 +54,11 @@ int	valid_map_size(t_game *game)
 
 int	valid_wall_map(t_game *game)
 {
-	if (!check_vertical_line(game))
-		return (0);
-	if (!check_horizontal_line(game))
-		return (0);
-	return (1);
+	if (check_vertical_line(game))
+		return (1);
+	if (check_horizontal_line(game))
+		return (1);
+	return (0);
 }
 
 int	valid_map(t_game *game)
@@ -71,7 +71,9 @@ int	valid_map(t_game *game)
 		return (ft_error(5));
 	if (game->exit_count != 1)
 		return (ft_error(6));
-	if (!valid_wall_map(game))
+	if (valid_wall_map(game))
 		return (ft_error(9));
-	return (1);
+	if (!check_path_valid(game))
+		return (ft_error(10));
+	return (0);
 }

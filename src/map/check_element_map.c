@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/12/05 10:52:24 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 17:20:24 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	count_element_map(t_game *game)
 		}
 		y++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_vertical_line(t_game *game)
@@ -96,12 +96,12 @@ int	check_vertical_line(t_game *game)
 	while (game->map[y] != NULL)
 	{
 		if (game->map[y][0] != WALL)
-			return (0);
+			return (1);
 		if (game->map[y][game->width - 1] != WALL)
-			return (0);
+			return (1);
 		y++;
 	}
-	return (1);
+	return (0);
 }
 
 int	check_horizontal_line(t_game *game)
@@ -112,15 +112,15 @@ int	check_horizontal_line(t_game *game)
 	while (game->map[0][x] != '\0')
 	{
 		if (game->map[0][x] != WALL)
-			return (0);
+			return (1);
 		x++;
 	}
 	x = 0;
 	while (game->map[game->height - 1][x] != '\0')
 	{
 		if (game->map[game->height - 1][x] != WALL)
-			return (0);
+			return (1);
 		x++;
 	}
-	return (1);
+	return (0);
 }

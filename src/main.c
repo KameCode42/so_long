@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 11:17:28 by david            ###   ########.fr       */
+/*   Updated: 2024/12/06 17:47:36 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ int	init_game(t_game *game, char **argv)
 {
 	ft_memset(game, 0, sizeof(t_game));
 	game->map_file = argv[1];
-	if (!initiation_map(game))
+	if (initiation_map(game))
 		return (1);
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(game->mlx, game->width * 32,
 			game->height * 32, "so_long");
 	if (!game->mlx_win)
-		return (0);
+		return (1);
 	create_images(game);
 	create_game(game);
-	return (1);
+	return (0);
 }
 
 void	setup_hook(t_game *game)
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv))
 		return (1);
-	if (!init_game(&game, argv))
+	if (init_game(&game, argv))
 		return (1);
 	setup_hook(&game);
 	mlx_loop(game.mlx);
