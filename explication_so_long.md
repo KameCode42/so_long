@@ -18,12 +18,20 @@ Condition a respecter :
 Fonctions MLX :
 
 mlx_xpm_file_to_image : permet d'enregistrer l'image xpm dans la structure
+
 mlx_put_image_to_window : permet d'inclure l'image dans la window
+
 mlx_destroy_window : permet de fermer la fenetre proprement
+
 mlx_init : permet d'initialiser la librairie MLX
+
 mlx_new_window : permet de creer une fenetre
-mlx_hook :
-mlx_loop : 
+
+mlx_key_hook : permet d'initialiser les differents controle du player
+
+mlx_hook : permet de dire à ton programme quoi faire quand un certain événement se produit, comme appuyer sur une touche ou cliquer avec la souris
+
+mlx_loop : maintient le programme en marche, permettant à ta fenêtre de rester ouverte et de réagir aux actions de l'utilisateur
 
 -------------------------------------------------------------------------------------------------------------
 
@@ -31,43 +39,81 @@ Fonctions map :
 
 check_element_map :
 - count line : permet de compter le nombre de ligne que contient la map
+
 - read_map : permet de lire la map ligne par ligne qui se trouve dans le fichier
+
 - count_element_map : permet de compter les elements tels que le player, item et sortie
-- valid_map_size : permet de valider que la map est bien rectangulaire
-- valide_map : fonction regroupant les fonctions check
 
-check_path_map :
-
-
-check_wall_map :
 - check_vertical_map : permet de verifier si les cotes de la map sont fermer par des murs
+
 - check_horizontal_line : permet de verifier si les bords inferieur et superieur sont fermer par des murs
-  valid_wall_map : fonction regroupant les fonctions check
+
+Check_path_map :
+
+
+
 
 init_map :
 - initiation_map : permet d'initialiser la map
 
+- create_image : creer les images utiliser dans le jeu
+
+- valid_map_size : permet de valider que la map est bien rectangulaire
+
+- valid_map_wall : permet de valider que les map est bien entourer de mur
+
+valid_map : effectue les differentes validation sur la carte
+
 -------------------------------------------------------------------------------------------------------------
 
-Fonctions create :
+Fonctions move :
 
-create_game_struct
-- images_objects : permet d'enregistrer les images objets xpm dans la structure
+controls :
+move_up,down,left,right :
+- permet de deplacer le joueur dans toutes les directions
+- permet de gerer la collison avec les murs
+- permet de rammasser les items et de les compter
+- permet de compter le nombre de pas que fais le joueur sur la map
+- permet d'atteindre la sortie si tous les items sont rammasser
+
+- controls : permet d'initialiser les differents controle au touche du clavier 
+
+- exit : permet de fermer le jeu et d'afficher un message success si le joueur fini la partie
+
+-------------------------------------------------------------------------------------------------------------
+
+Fonctions win :
+
+create_images_struct :
+- images_objects : permet d'enregistrer les images objets xpm dans la structure avec mlx_xpm_file_to_image
+
 - images_player : permet d'enregistrer les images du player xpm dans la structure
 
-creat_game_objects
-- les fonctions place_... permettent de placer les images dans la windows
+render_objects :
+- les fonctions place : permettent de placer les images dans la fenetre de jeu avec mlx_put_image_to_window
 
-create_window
-- fonctions regroupant les fonctions permettant d'afficher les sprites a l'ecran
+- create_game : fonction regroupant le placement des sprites 
+sur la carte
+
+render_player :
+- placer_player : permet de placer toutes les directions du sprite sur la map
 
 -------------------------------------------------------------------------------------------------------------
 
 Fonctions main
 
-check_args
+check_args :
 - permet de checker si les arguments pour lancer le jeu sont valide
+
+init_game :
+- regroupe les fonctions pour initialiser la map, creer les images et creer le jeu
+
+setup_hook :
+- regroupe les fonctions mlx pour initialiser les controles et gerer les touches clavier et permet de gerer l'evenement de fermeture de la fenetre
+17 = code de la fermeture de la fenetre par la croix
+0 = aucun filtre n'est appliquer, gerer de facon de globale
+
 close_game
-- permet de fermer le jeu proprement
+- permet de fermer le jeu proprement avec mlx_destroy_window
 
 -------------------------------------------------------------------------------------------------------------
