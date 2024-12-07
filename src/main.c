@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:36 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 13:54:08 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ int	check_args(int argc, char **argv)
 		return (ft_error(1));
 	if (ft_strcmp(&argv[1][len - 4], ".ber") != 0)
 		return (ft_error(2));
+	while (argv[1][len] != '/')
+		len--;
+	if (argv[1][len + 1] == '.')
+		return (ft_error(1));
 	return (0);
 }
 

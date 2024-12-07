@@ -6,14 +6,17 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/07 10:37:20 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 15:22:06 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	map_calc(t_game *game, size_t y, size_t x)
+bool	map_calc(t_game *game)
 {
+	size_t	y;
+	size_t	x;
+
 	game->map_copy = malloc(game->height * sizeof(int *));
 	if (game->map_copy == NULL)
 		return (false);
@@ -37,43 +40,55 @@ bool	map_calc(t_game *game, size_t y, size_t x)
 	return (true);
 }
 
-bool	check_path(t_game *game, size_t y, size_t x)
+void	check_path(t_game *game, size_t y, size_t x)
 {
 	if (x >= game->width || y >= game->height)
-		return (0);
+		return ;
 	if (game->map[y][x] == WALL)
-		return (0);
+		return ;
 	if (game->map_copy[y][x] == true)
-		return (0);
+		return ;
+	if (game->map[y][x] == EXIT)
+	{
+		game->map_copy[y][x] = true;
+		return ;
+	}
 	game->map_copy[y][x] = true;
-	if (game->map[y][x] == ITEM)
-		game->count_items++;
-	if (game->map[y][x] == EXIT && game->count_items == game->total_items)
-		return (true);
-	if (y + 1 < game->height && check_path(game, y + 1, x))
-		return (true);
-	if (y > 0 && check_path(game, y - 1, x))
-		return (true);
-	if (x + 1 < game->width && check_path(game, y, x + 1))
-		return (true);
-	if (x > 0 && check_path(game, y, x - 1))
-		return (true);
-	return (0);
+	if (y + 1 < game->height)
+		check_path(game, y + 1, x);
+	if (y > 0)
+		check_path(game, y - 1, x);
+	if (x + 1 < game->width)
+		check_path(game, y, x + 1);
+	if (x > 0)
+		check_path(game, y, x - 1);
 }
 
 bool	check_path_valid(t_game *game)
 {
-	int	save_count;
+	size_t	x;
+	size_t	y;
 
-	save_count = game->count_items;
-	if (!map_calc(game, game->player_y, game->player_x))
+	y = -1;
+	if (!map_calc(game))
 		return (false);
-	if (check_path(game, game->player_y, game->player_x))
+	check_path(game, game->player_y, game->player_x);
+	while (y < game->height)
 	{
-		game->count_items = save_count;
-		return (true);
+		x = 0;
+		while (x < game->width)
+		{
+			if (game->map[y][x] == ITEM || game->map[y][x] == EXIT)
+			{
+				if (!game->map_copy[y++][x])
+				{
+					free_map_copy(game);
+					return (false);
+				}
+			}
+			x++;
+		}
 	}
-	game->count_items = save_count;
 	free_map_copy(game);
-	return (false);
+	return (true);
 }

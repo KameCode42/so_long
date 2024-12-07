@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/12/07 09:26:32 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 14:03:25 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,25 @@ bool	free_map_copy(t_game *game)
 int	ft_error(int error)
 {
 	if (error == 1)
-		ft_printf("Error: invalid number of arguments\n");
+		ft_printf("Error\n: invalid number of arguments\n");
 	if (error == 2)
-		ft_printf("Error: file must have .ber extension\n");
+		ft_printf("Error\n: file must have .ber extension\n");
 	if (error == 3)
-		ft_printf("Error: the map is not rectangular\n");
+		ft_printf("Error\n: the map is not rectangular\n");
 	if (error == 4)
-		ft_printf("Error: the map must contain only one player\n");
+		ft_printf("Error\n: the map must contain only one player\n");
 	if (error == 5)
-		ft_printf("Error: the map must contain at least one item\n");
+		ft_printf("Error\n: the map must contain at least one item\n");
 	if (error == 6)
-		ft_printf("Error: the map must contain at least one exit\n");
+		ft_printf("Error\n: the map must contain at least one exit\n");
 	if (error == 7)
-		ft_printf("Error: File does not exist\n");
+		ft_printf("Error\n: File does not exist\n");
 	if (error == 8)
-		ft_printf("Error: map file is empty\n");
+		ft_printf("Error\n: map file is empty\n");
 	if (error == 9)
-		ft_printf("Error: the map is not closed by walls\n");
+		ft_printf("Error\n: invalid character\n");
 	if (error == 10)
-		ft_printf("chemin invalide\n");
+		ft_printf("Error\n: invalid path\n");
 	return (1);
 }
 

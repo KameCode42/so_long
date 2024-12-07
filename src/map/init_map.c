@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:58:55 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 18:51:36 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 14:00:38 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,29 @@ int	valid_map_size(t_game *game)
 	return (1);
 }
 
-int	valid_wall_map(t_game *game)
+int	valid_char_map(t_game *game)
 {
+	size_t	x;
+	size_t	y;
+
 	if (check_vertical_line(game))
 		return (1);
 	if (check_horizontal_line(game))
 		return (1);
+	y = 0;
+	while (y < game->height)
+	{
+		x = 0;
+		while (x < game->width)
+		{
+			if (game->map[y][x] != FLOOR && game->map[y][x] != WALL
+			&& game->map[y][x] != EXIT && game->map[y][x] != ITEM
+			&& game->map[y][x] != PLAYER)
+				return (1);
+			x++;
+		}
+		y++;
+	}
 	return (0);
 }
 
@@ -71,7 +88,7 @@ int	valid_map(t_game *game)
 		return (ft_error(5));
 	if (game->exit_count != 1)
 		return (ft_error(6));
-	if (valid_wall_map(game))
+	if (valid_char_map(game))
 		return (ft_error(9));
 	if (!check_path_valid(game))
 		return (ft_error(10));
