@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/07 15:22:06 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 16:16:19 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ bool	check_path_valid(t_game *game)
 	if (!map_calc(game))
 		return (false);
 	check_path(game, game->player_y, game->player_x);
-	while (y < game->height)
+	while (++y < game->height)
 	{
 		x = 0;
 		while (x < game->width)
 		{
 			if (game->map[y][x] == ITEM || game->map[y][x] == EXIT)
 			{
-				if (!game->map_copy[y++][x])
+				if (!game->map_copy[y][x])
 				{
 					free_map_copy(game);
 					return (false);
