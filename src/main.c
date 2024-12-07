@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/07 13:54:08 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 15:41:40 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	init_game(t_game *game, char **argv)
 		return (1);
 	game->mlx = mlx_init();
 	game->mlx_win = mlx_new_window(game->mlx, game->width * 32,
-			game->height * 32, "so_long");
+			game->height * 32, "GOKU");
 	if (!game->mlx_win)
 		return (1);
 	create_images(game);
