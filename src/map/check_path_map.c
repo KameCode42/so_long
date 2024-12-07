@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/07 09:59:48 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 10:37:20 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,17 @@ bool	check_path(t_game *game, size_t y, size_t x)
 
 bool	check_path_valid(t_game *game)
 {
+	int	save_count;
+
+	save_count = game->count_items;
 	if (!map_calc(game, game->player_y, game->player_x))
 		return (false);
 	if (check_path(game, game->player_y, game->player_x))
+	{
+		game->count_items = save_count;
 		return (true);
+	}
+	game->count_items = save_count;
 	free_map_copy(game);
 	return (false);
 }
