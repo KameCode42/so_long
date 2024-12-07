@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:35:24 by david             #+#    #+#             */
-/*   Updated: 2024/12/06 18:50:42 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 09:26:32 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_error(int error)
 		ft_printf("Error: the map is not closed by walls\n");
 	if (error == 10)
 		ft_printf("chemin invalide\n");
-	return (0);
+	return (1);
 }
 
 void	remove_newline(char *line)

@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:51:58 by david             #+#    #+#             */
-/*   Updated: 2024/12/06 18:52:17 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 09:59:48 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ bool	check_path(t_game *game, size_t y, size_t x)
 		game->count_items++;
 	if (game->map[y][x] == EXIT && game->count_items == game->total_items)
 		return (true);
-	if (y + 1 < game->height)
-		check_path(game, y + 1, x);
-	if (y > 0)
-		check_path(game, y - 1, x);
-	if (x + 1 < game->width)
-		check_path(game, y, x + 1);
-	if (x > 0)
-		check_path(game, y, x - 1);
+	if (y + 1 < game->height && check_path(game, y + 1, x))
+		return (true);
+	if (y > 0 && check_path(game, y - 1, x))
+		return (true);
+	if (x + 1 < game->width && check_path(game, y, x + 1))
+		return (true);
+	if (x > 0 && check_path(game, y, x - 1))
+		return (true);
 	return (0);
 }
 

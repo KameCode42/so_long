@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 15:19:17 by david             #+#    #+#             */
-/*   Updated: 2024/12/06 17:20:24 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/07 09:56:04 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int	count_element_map(t_game *game)
 		while (x < game->width)
 		{
 			if (game->map[y][x] == PLAYER)
+			{
 				game->player_count++;
+				game->player_y = y;
+				game->player_x = x;
+			}
 			if (game->map[y][x] == EXIT)
 				game->exit_count++;
 			if (game->map[y][x] == ITEM)
