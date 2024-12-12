@@ -49,11 +49,14 @@ check_element_map :
 - check_horizontal_line : permet de verifier si les bords inferieur et superieur sont fermer par des murs
 
 check_path_map :
-- check_path = initialise une map copy rempli de false, false signifiant que la case n'a pas encore ete explore
+- map_calc : initialise une map copy rempli de false, false signifiant que la case n'a pas encore ete explore
 evite de repasser sur une case deja visite
 
+- check_path : fonction recursive qui permet de checker chaque case autour du player afin
+de savoir si un chemin est possible
 
-
+check_path_valid
+- fonction qui prend map_calc et check_path pour valider le chemin
 
 init_map :
 - initiation_map : permet d'initialiser la map
@@ -62,9 +65,9 @@ init_map :
 
 - valid_map_size : permet de valider que la map est bien rectangulaire
 
-- valid_map_wall : permet de valider que les map est bien entourer de mur
+- valid_char_map : permet de valider les differents char sur la map(item, player etc)
 
-valid_map : effectue les differentes validation sur la carte
+- valid_map : effectue les differentes validation sur la carte
 
 -------------------------------------------------------------------------------------------------------------
 
