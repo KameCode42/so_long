@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dle-fur <dle-fur@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 14:39:16 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/06 11:32:57 by david            ###   ########.fr       */
+/*   Updated: 2024/12/12 13:04:45 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	move_up(t_game *game)
 			game->map[game->player_y - 1][game->player_x] = PLAYER;
 		game->player_y -= 1;
 		success_game(game);
+		create_game(game);
 	}
-	create_game(game);
 }
 
 void	move_down(t_game *game)
@@ -48,8 +48,8 @@ void	move_down(t_game *game)
 			game->map[game->player_y + 1][game->player_x] = PLAYER;
 		game->player_y += 1;
 		success_game(game);
+		create_game(game);
 	}
-	create_game(game);
 }
 
 void	move_left(t_game *game)
@@ -68,8 +68,8 @@ void	move_left(t_game *game)
 			game->map[game->player_y][game->player_x - 1] = PLAYER;
 		game->player_x -= 1;
 		success_game(game);
+		create_game(game);
 	}
-	create_game(game);
 }
 
 void	move_right(t_game *game)
@@ -88,8 +88,8 @@ void	move_right(t_game *game)
 			game->map[game->player_y][game->player_x + 1] = PLAYER;
 		game->player_x += 1;
 		success_game(game);
+		create_game(game);
 	}
-	create_game(game);
 }
 
 int	controls(int key, t_game *game)
