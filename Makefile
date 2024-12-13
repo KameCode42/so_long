@@ -7,7 +7,7 @@ LIBC		= ar rcs
 CC			= gcc
 RM			= rm -f
 
-FLAGS		= -Wall -Wextra -Werror -Iinc
+FLAGS		= -Wall -Wextra -Werror -Iinc -g
 
 SRCS 		= \
 ./src/map/check_element_map.c ./src/map/check_path_map.c ./src/map/init_map.c \

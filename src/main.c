@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:51:28 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/07 15:41:40 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:09:33 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,17 @@ void	setup_hook(t_game *game)
 
 int	close_game(t_game *game)
 {
-	mlx_destroy_window(game->mlx, game->mlx_win);
-	exit (0);
+	free_map(game);
+	free_map_copy(game);
+	destroy_images(game);
+	if (game->mlx_win)
+	{
+		mlx_destroy_window(game->mlx, game->mlx_win);
+		if (game->mlx)
+			mlx_destroy_display(game->mlx);
+	}
+	free(game->mlx);
+	exit(0);
 }
 
 int	main(int argc, char **argv)
@@ -66,6 +75,5 @@ int	main(int argc, char **argv)
 		return (1);
 	setup_hook(&game);
 	mlx_loop(game.mlx);
-	free_map(&game);
 	return (0);
 }

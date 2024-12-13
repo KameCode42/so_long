@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/13 15:03:41 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/13 17:06:26 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	move_left(t_game *game);
 void	move_right(t_game *game);
 int		controls(int key, t_game *game);
 int		success_game(t_game *game);
+void	destroy_images(t_game *game);
 
 //win
 void	images_objects(t_game *game);
