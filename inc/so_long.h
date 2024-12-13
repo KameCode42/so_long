@@ -6,7 +6,7 @@
 /*   By: dle-fur <dle-fur@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:42:15 by dle-fur           #+#    #+#             */
-/*   Updated: 2024/12/07 15:11:24 by dle-fur          ###   ########.fr       */
+/*   Updated: 2024/12/13 15:03:41 by dle-fur          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_game
 	void	*img_right;
 	void	*img_up;
 	void	*img_down;
-
 
 	int		player_count;
 	int		exit_count;
