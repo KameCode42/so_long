@@ -7,13 +7,13 @@ LIBC		= ar rcs
 CC			= gcc
 RM			= rm -f
 
-FLAGS		= -Wall -Wextra -Werror -Iinc -g
+FLAGS		= -Wall -Wextra -Werror -Iinc
 
 SRCS 		= \
 ./src/map/check_element_map.c ./src/map/check_path_map.c ./src/map/init_map.c \
 ./src/win/create_images_struct.c ./src/win/render_objects.c ./src/win/render_player.c \
-./src/move/controls.c ./src/move/exit.c \
-./src/main.c ./src/utils.c \
+./src/move/controls.c \
+./src/main.c ./src/utils.c ./src/exit.c \
 
 OBJS 		= $(SRCS:.c=.o)
 
