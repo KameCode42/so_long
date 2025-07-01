@@ -27,3 +27,29 @@ La carte est un fichier texte structuré comme ceci : <br>
 P	= Joueur <br>
 C	= Collectible <br>
 E	= Sortie (accessible une fois les objets ramassés) <br>
+
+# Conditions à respecter :
+- Un seul joueur sur la map
+- Minimum un item
+- Une seul sortie sur la map
+- La map doit être rectangulaire
+- La map doit être fermée par des murs
+- Un chemin valide pour atteindre item et sortie
+- Le joueur doit pouvoir se deplacer dans toutes les directions
+
+# Fonctions MLX utiles :
+- `mlx_xpm_file_to_image` : permet d'enregistrer l'image xpm dans la structure
+
+mlx_put_image_to_window : permet d'inclure l'image dans la window
+
+mlx_destroy_window : permet de fermer la fenetre proprement
+
+mlx_init : permet d'initialiser la librairie MLX
+
+mlx_new_window : permet de creer une fenetre
+
+mlx_key_hook : permet d'initialiser les differents controle du player
+
+mlx_hook : permet de dire à ton programme quoi faire quand un certain événement se produit, comme appuyer sur une touche ou cliquer avec la souris
+
+mlx_loop : maintient le programme en marche, permettant à ta fenêtre de rester ouverte et de réagir aux actions de l'utilisateur
