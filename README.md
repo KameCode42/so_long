@@ -46,3 +46,5 @@ E	= Sortie (accessible une fois les objets ramassés) <br>
 - `mlx_key_hook` : permet d'initialiser les differents contrôle du player
 - `mlx_hook` : permet de dire au programme quoi faire quand un certain événement se produit, comme appuyer sur une touche ou cliquer avec la souris
 - `mlx_loop` : maintient le programme en marche, permettant à la fenêtre de rester ouverte et de réagir aux actions de l'utilisateur
+
+# Compilation et exécution :
