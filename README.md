@@ -15,7 +15,7 @@ Le jeu doit :
 - Vérifier que tous les objets sont ramassés avant d’ouvrir la sortie
 - Terminer la partie si le joueur atteint la sortie
 
-La carte est un fichier texte structuré comme ceci :
+La carte est un fichier texte structuré comme ceci : <br>
 11111
 1P0C1
 10001
