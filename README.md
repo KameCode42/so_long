@@ -22,8 +22,8 @@ La carte est un fichier texte structuré comme ceci : <br>
 1C0E1 <br>
 11111 <br>
 
-- 1 = Mur
-- 0	= Sol
-- P	= Joueur
-- C	= Collectible
-- E	= Sortie (accessible une fois les objets ramassés)
+1 = Mur
+0	= Sol
+P	= Joueur
+C	= Collectible
+E	= Sortie (accessible une fois les objets ramassés)
