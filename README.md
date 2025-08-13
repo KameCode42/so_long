@@ -1,4 +1,4 @@
-![so_long](https://github.com/user-attachments/assets/fb91097d-0820-4e7a-98ad-9c24582f02a3)
+<img width="720" height="720" alt="Image" src="https://github.com/user-attachments/assets/171f686b-ef85-4dd0-9a84-02a0836d96ff" />
 
 # Sujet :
 so_long est un projet de jeu en 2D développé avec MiniLibX. L'objectif est de créer un jeu simple dans lequel un joueur doit collecter tous les objets d’une carte et atteindre la sortie pour gagner.
