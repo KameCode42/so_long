@@ -48,4 +48,4 @@ E	= Sortie (accessible une fois les objets ramassés) <br>
 - `mlx_loop` : maintient le programme en marche, permettant à la fenêtre de rester ouverte et de réagir aux actions de l'utilisateur
 
 # Compilation et exécution :
-<img file:///home/david/Images/Captures%20d%E2%80%99%C3%A9cran/Capture%20d%E2%80%99%C3%A9cran%20du%202025-08-13%2019-12-21.png />
+<img width="447" height="160" alt="Image" src="https://github.com/user-attachments/assets/fe944665-e07c-4692-8dec-5306e55d97c4" />
