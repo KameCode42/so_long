@@ -49,3 +49,5 @@ E	= Sortie (accessible une fois les objets ramassés) <br>
 
 # Compilation et exécution :
 <img width="447" height="160" alt="Image" src="https://github.com/user-attachments/assets/fe944665-e07c-4692-8dec-5306e55d97c4" />
+<br>
+<img width="673" height="425" alt="Image" src="https://github.com/user-attachments/assets/46250321-8a75-4a27-8d59-dd1e4eb3e518" />
